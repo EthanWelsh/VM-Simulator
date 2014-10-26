@@ -89,24 +89,8 @@ public class RAM
 	}
 
 	// *********************************************************************************//
-	// 									EVICTION METHODS                                //
-	// *********************************************************************************//
-	private int random()
-	{ // pick a page at random to evict from memory
-
-		Set keyset = frames.keySet();
-		int randomNumber = (new Random()).nextInt(frames.size());
-
-		int pageToEvict = ((Integer) keyset.toArray()[randomNumber]).intValue();
-		//System.out.println("I'm evicting page " + pageToEvict);
-		return pageToEvict;
-
-	}
-
-	// *********************************************************************************//
 	// 									PRIVATE METHODS                                 //
 	// *********************************************************************************//
-
 
 	private void put(int pageToAdd)
 	{ // attempt to put a given frame into RAM. If there isn't room, evict a page to make room for it.
@@ -151,7 +135,8 @@ public class RAM
 				System.exit(0);
 				break;
 			case RANDOM:
-				return random();
+				return (new RAND(this)).random();
+
 		}
 		return -1;
 	}
