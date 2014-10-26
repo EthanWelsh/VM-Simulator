@@ -32,12 +32,6 @@ public class Main
 		RAM ram = new RAM(5);
 
 
-
-
-
-
-
-
 		File file = new File(traceFile);
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 
@@ -60,6 +54,24 @@ public class Main
 
 		System.out.println("\n" + ram);
 		ram.printStats();
+
+
+
+		/*CircularQueue q = new CircularQueue();
+		q.enqueue(1);
+		q.enqueue(2);
+		q.enqueue(3);
+		q.enqueue(4);
+		q.enqueue(5);
+
+		System.out.println(q + "\n");
+
+
+
+		System.out.println(q); */
+
+
+
 
 	}
 

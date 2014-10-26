@@ -66,8 +66,16 @@ public class CircularQueue
 		if (head == null) return -1;
 		int ret = head.getData();
 
-		if(head.getNext() == null) head = null;
-		else head = head.getNext();
+		if(head.getNext() == null)
+		{
+			head = null;
+			tail = null;
+		}
+		else
+		{
+			head = head.getNext();
+			tail.setNext(head);
+		}
 
 		return ret;
 	}
@@ -79,13 +87,15 @@ public class CircularQueue
 
 	public String toString()
 	{
+		if(head == null || tail == null) return "";
+
 		Node current = head;
 		do
 		{
 			System.out.println(current.getData());
 			current = current.getNext();
 		} while (current != head);
-		return"";
+		return "";
 	}
 
 }

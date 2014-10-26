@@ -20,7 +20,7 @@ public class RAM
 
 
 	int numberOfFrames = 0;
-	HashMap<Integer, Page> frames;
+	public HashMap<Integer, Page> frames;
 
 	// *********************************************************************************//
 	// 										CONSTRUCTORS                                //
@@ -76,6 +76,16 @@ public class RAM
 			s += "\n";
 		}
 		return s;
+	}
+
+	public int size()
+	{
+		return numberOfFrames;
+	}
+
+	public Set pagesInRAM()
+	{
+		return frames.keySet();
 	}
 
 	// *********************************************************************************//

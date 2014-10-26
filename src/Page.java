@@ -4,7 +4,8 @@
 public class Page
 {
 	int frameNumber;
-	boolean isClean;
+	private boolean isClean;
+	private boolean isReferenced;
 
 	public Page(int x)
 	{
@@ -25,6 +26,21 @@ public class Page
 	public void setClean()
 	{
 		isClean = true;
+	}
+
+	public void setReferenced()
+	{
+		isReferenced = true;
+	}
+
+	public void setUnreferenced()
+	{
+		isReferenced = false;
+	}
+
+	public boolean isReferenced()
+	{
+		return isReferenced;
 	}
 
 	public boolean equals(Object o)
