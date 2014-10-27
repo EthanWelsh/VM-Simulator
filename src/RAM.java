@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 
 public class RAM
@@ -17,7 +18,7 @@ public class RAM
 	int numberOfFrames = 0;
 	public HashMap<Integer, Page> frames;
 	int timeout = 0;
-
+	String traceFile = "";
 
 	RAND rand;
 	Clock clock;
@@ -36,12 +37,13 @@ public class RAM
 		frames = new HashMap<Integer, Page>(this.numberOfFrames);
 	}
 
-	public RAM(int numberOfFrames, int method, int timeout)
+	public RAM(int numberOfFrames, int method, int timeout, String file)
 	{
 		EVICT_METHOD = method;
 		this.numberOfFrames = numberOfFrames;
 		frames = new HashMap<Integer, Page>(this.numberOfFrames);
 		this.timeout = timeout;
+		this.traceFile = file;
 	}
 
 	// *********************************************************************************//
@@ -135,23 +137,31 @@ public class RAM
 	// findEvictee: decide which page to evict given the method for eviction OPT|NRU|CLOCK|RANDOM
 	private int findEvictee(int method)
 	{
-		switch(method)
+		try
 		{
-			case OPTIMAL:
-				System.out.println("Optimal not supported at this time.");
-				System.exit(0);
-				break;
-			case CLOCK:
-				System.out.println("Clock not supported at this time.");
-				System.exit(0);
-				break;
-			case NRU:
-				if(nru == null) nru = new NRU(this, this.timeout);
-				return nru.getPageToEvict();
-			case RANDOM:
-				if(rand == null) rand = new RAND(this);
-				return rand.getPageToEvict();
+			switch(method)
+			{
+				case OPTIMAL:
+					if(opt == null) opt = new OPT(this, traceFile);
+					return opt.getPageToEvict();
+				case CLOCK:
+					System.out.println("Clock not supported at this time.");
+					System.exit(0);
+					break;
+				case NRU:
+					if(nru == null) nru = new NRU(this, this.timeout);
+					return nru.getPageToEvict();
+				case RANDOM:
+					if(rand == null) rand = new RAND(this);
+					return rand.getPageToEvict();
+			}
 		}
+		catch(Exception e)
+		{
+			System.out.println("We encountered an error.");
+			e.printStackTrace();
+		}
+
 		return -1;
 	}
 

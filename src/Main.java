@@ -2,6 +2,12 @@ import java.io.*;
 
 public class Main
 {
+
+	private static final int OPTIMAL = 0;
+	private static final int CLOCK = 1;
+	private static final int NRU = 2;
+	private static final int RANDOM = 3;
+
     public static void main(String[] args) throws IOException
 	{ // ./vmsim –n <numberOfFrames> -a <opt|clock|nru|rand> [-r <refresh>] <tracefile>
 
@@ -28,7 +34,7 @@ public class Main
 		// Number of Frames 		X
 		// 32 bit address space
 
-		RAM ram = new RAM(5, 2, refreshRate);
+		RAM ram = new RAM(5, OPTIMAL, refreshRate, traceFile);
 
 
 		File file = new File(traceFile);
@@ -57,6 +63,12 @@ public class Main
 
 		//NRU n = new NRU(ram, refreshRate);
 		return;
+
+
+
+
+
+
 
 	}
 
