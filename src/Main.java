@@ -28,8 +28,7 @@ public class Main
 		// Number of Frames 		X
 		// 32 bit address space
 
-
-		RAM ram = new RAM(5);
+		RAM ram = new RAM(5, 2, refreshRate);
 
 
 		File file = new File(traceFile);
@@ -56,22 +55,8 @@ public class Main
 		ram.printStats();
 
 
-
-		/*CircularQueue q = new CircularQueue();
-		q.enqueue(1);
-		q.enqueue(2);
-		q.enqueue(3);
-		q.enqueue(4);
-		q.enqueue(5);
-
-		System.out.println(q + "\n");
-
-
-
-		System.out.println(q); */
-
-
-
+		//NRU n = new NRU(ram, refreshRate);
+		return;
 
 	}
 

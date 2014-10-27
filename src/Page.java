@@ -7,10 +7,24 @@ public class Page
 	private boolean isClean;
 	private boolean isReferenced;
 
+
+	private static final int CLEAN_UNREFERENCED = 0;
+	private static final int DIRTY_UNREFERENCED = 1;
+	private static final int CLEAN_REFERENCED = 2;
+	private static final int DIRTY_REFERENCED = 3;
+
+
+
+
 	public Page(int x)
 	{
 		frameNumber = x;
 		isClean = true;
+	}
+
+	public int number()
+	{
+		return frameNumber;
 	}
 
 	public boolean isClean()
@@ -56,6 +70,15 @@ public class Page
 	public int hashCode()
 	{
 		return (new Integer(frameNumber)).hashCode();
+	}
+
+	public int pageType()
+	{
+	 	if(isClean && isReferenced) return CLEAN_REFERENCED;
+		else if(isClean && !isReferenced) return CLEAN_UNREFERENCED;
+		else if(!isClean && isReferenced) return DIRTY_REFERENCED;
+		else if(!isClean && !isReferenced) return DIRTY_UNREFERENCED;
+		return -1;
 	}
 
 

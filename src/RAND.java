@@ -10,8 +10,8 @@ public class RAND
 	    this.ram = ram;
 	}
 
-	public int random()
-	{ // pick a page at random to evict from memory
+	public int getPageToEvict()
+	{ // pick a page at getPageToEvict to evict from memory
 
 		Set keyset = ram.pagesInRAM();
 		int randomNumber = (new Random()).nextInt(ram.size());

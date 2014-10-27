@@ -2,7 +2,6 @@ import java.util.*;
 
 public class RAM
 {
-
 	private static int NO_EVICT = 0;
 	private static int EVICT_CLEAN = 0;
 	private static int EVICT_DIRTY = 0;
@@ -15,12 +14,16 @@ public class RAM
 
 	private static int EVICT_METHOD = 3;
 
-
-
-
-
 	int numberOfFrames = 0;
 	public HashMap<Integer, Page> frames;
+	int timeout = 0;
+
+
+	RAND rand;
+	Clock clock;
+	NRU nru;
+	OPT opt;
+
 
 	// *********************************************************************************//
 	// 										CONSTRUCTORS                                //
@@ -33,11 +36,12 @@ public class RAM
 		frames = new HashMap<Integer, Page>(this.numberOfFrames);
 	}
 
-	public RAM(int numberOfFrames, int method)
+	public RAM(int numberOfFrames, int method, int timeout)
 	{
 		EVICT_METHOD = method;
 		this.numberOfFrames = numberOfFrames;
 		frames = new HashMap<Integer, Page>(this.numberOfFrames);
+		this.timeout = timeout;
 	}
 
 	// *********************************************************************************//
@@ -88,6 +92,17 @@ public class RAM
 		return frames.keySet();
 	}
 
+	public Page getPage(Integer integer)
+	{
+		return frames.get(integer);
+	}
+
+	public void dereferenceEverything()
+	{
+		for(Object i : pagesInRAM()) frames.get(i).setUnreferenced();
+	}
+
+
 	// *********************************************************************************//
 	// 									PRIVATE METHODS                                 //
 	// *********************************************************************************//
@@ -131,12 +146,11 @@ public class RAM
 				System.exit(0);
 				break;
 			case NRU:
-				System.out.println("Clock not supported at this time.");
-				System.exit(0);
-				break;
+				if(nru == null) nru = new NRU(this, this.timeout);
+				return nru.getPageToEvict();
 			case RANDOM:
-				return (new RAND(this)).random();
-
+				if(rand == null) rand = new RAND(this);
+				return rand.getPageToEvict();
 		}
 		return -1;
 	}
