@@ -13,9 +13,6 @@ public class Page
 	private static final int CLEAN_REFERENCED = 2;
 	private static final int DIRTY_REFERENCED = 3;
 
-
-
-
 	public Page(int x)
 	{
 		frameNumber = x;

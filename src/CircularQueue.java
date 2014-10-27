@@ -1,18 +1,18 @@
 class Node
 {
 	Node next;
-	int data;
+	Page data;
 
 	public Node()
 	{ // Empty Constructor
 	}
 
-	public Node(int data)
+	public Node(Page data)
 	{
 		this.data = data;
 	}
 
-	public Node(int data, Node next)
+	public Node(Page data, Node next)
 	{
 		this.data = data;
 		this.next = next;
@@ -28,12 +28,12 @@ class Node
 		return this.next;
 	}
 
-	public int getData()
+	public Page getData()
 	{
 		return this.data;
 	}
 
-	public void setData(int data)
+	public void setData(Page data)
 	{
 		this.data = data;
 	}
@@ -44,7 +44,7 @@ public class CircularQueue
 	Node head;
 	Node tail;
 
-	public void enqueue(int data)
+	public void enqueue(Page data)
 	{
 		Node n = new Node(data);
 		if (head == null)
@@ -61,10 +61,10 @@ public class CircularQueue
 		}
 	}
 
-	public int dequeue()
+	public Page dequeue()
 	{
-		if (head == null) return -1;
-		int ret = head.getData();
+		if (head == null) return null;
+		Page ret = head.getData();
 
 		if(head.getNext() == null)
 		{
@@ -97,5 +97,4 @@ public class CircularQueue
 		} while (current != head);
 		return "";
 	}
-
 }

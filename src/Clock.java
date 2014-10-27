@@ -1,7 +1,11 @@
-/**
- * Created by welshej on 10/26/14.
- */
 public class Clock
 {
+	RAM ram;
+
+	public Clock(RAM ram)
+	{
+		this.ram = ram;
+	}
+
 
 }
