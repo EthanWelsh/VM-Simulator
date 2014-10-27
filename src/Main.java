@@ -34,7 +34,7 @@ public class Main
 		// Number of Frames 		X
 		// 32 bit address space
 
-		RAM ram = new RAM(5, OPTIMAL, refreshRate, traceFile);
+		RAM ram = new RAM(10, RANDOM, refreshRate, traceFile);
 
 
 		File file = new File(traceFile);
@@ -57,7 +57,6 @@ public class Main
 			else System.out.println("Houston, we have a problem.");
 		}
 
-		System.out.println("\n" + ram);
 		ram.printStats();
 
 
