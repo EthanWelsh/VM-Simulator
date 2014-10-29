@@ -11,10 +11,8 @@ public class OPT
 	HashMap<Integer, ArrayList<Integer>> priorityMap;
 	RAM ram;
 
-
 	public OPT(RAM ram, String fname) throws IOException
 	{
-
 		this.ram = ram;
 		priorityMap = new HashMap<Integer, ArrayList<Integer>>();
 		File file = new File(fname);
@@ -27,7 +25,7 @@ public class OPT
 		{
 			String [] splitter = line.split(" ");
 
-			int pageNumber = Integer.parseInt(splitter[0].substring(0,2), 16);
+			int pageNumber = Integer.parseInt(splitter[0].substring(0,5), 16);
 
 			if(priorityMap.containsKey(pageNumber))
 			{
@@ -41,31 +39,44 @@ public class OPT
 			}
 			indexInFile++;
 		}
+
+		System.out.println("ZEBRAS:::: " + priorityMap.size());
 	}
 
 	public int getPageToEvict()
 	{
 		Set pagesInRam = ram.pagesInRAM();
-		int onTheChoppingBlock = -1;
+		Integer onTheChoppingBlock = new Integer(0);
 
 		for(Object page : pagesInRam)
-		{
-			if(nextUsed((Integer) page) == -1)
-			{
-				if(ram.getPage((Integer)page).isClean()) return ((Integer)page); // If this page is never used again, evict it.
-				else onTheChoppingBlock = (Integer)page;
+		{ // Go through every page in ram
+
+			Integer ipage = (Integer)page;
+
+			if(nextUsed(ipage) == -1)
+			{ // If the page will never be used again...
+				if(ram.getPage(ipage).isClean())
+				{ // If it's clean.
+					//popOffFront(ipage);
+					return ipage; // If this page is never used again, evict it.
+				}
+				else
+				{ // Otherwise, if it's dirty, keep look to see if you can find a clean page that won't be used to beat it.
+					onTheChoppingBlock = ipage;
+				}
 			}
 			else
-			{
-			  	if(nextUsed((Integer) page) > nextUsed(onTheChoppingBlock))
-				{
-					onTheChoppingBlock = (Integer)page;
+			{ // Otherwise, if the page WILL be used again in the future...
+			  	if(nextUsed(ipage) > nextUsed(onTheChoppingBlock))
+				{ // See if the page that we're looking at
+					onTheChoppingBlock = ipage;
 				}
-				else if(nextUsed((Integer) page) == nextUsed(onTheChoppingBlock))
+				else if(nextUsed(ipage) == nextUsed(onTheChoppingBlock))
 				{
-					if(ram.getPage((Integer)page).isClean() && !ram.getPage((Integer)onTheChoppingBlock).isClean())
+					System.out.println("DDSFsdjfsdlkjfshdsdfadsfdsf");
+					if(ram.getPage(ipage).isClean() && !ram.getPage(onTheChoppingBlock).isClean())
 					{
-						onTheChoppingBlock = (Integer)page;
+						onTheChoppingBlock = ipage;
 					}
 				}
 			}
@@ -83,7 +94,7 @@ public class OPT
 		{
 			System.out.println(i + ": " + priorityMap.get(i).size());
 		}
-		return"";
+		return "";
 	}
 
 	private int nextUsed(Integer p)
@@ -98,7 +109,7 @@ public class OPT
 	{
 	  	if(priorityMap.get(i) == null)
 		{
-			System.out.println("FATAL ZEBRAS");
+			//System.out.println("FATAL ZEBRAS " + i);
 		}
 		else if(priorityMap.get(i).size() == 1)
 		{

@@ -34,7 +34,7 @@ public class Main
 		// Number of Frames 		X
 		// 32 bit address space
 
-		RAM ram = new RAM(10, RANDOM, refreshRate, traceFile);
+		RAM ram = new RAM(numframes, OPTIMAL, refreshRate, traceFile);
 
 
 		File file = new File(traceFile);
@@ -44,7 +44,7 @@ public class Main
 		while ((line = reader.readLine()) != null)
 		{
 			String [] splitter = line.split(" ");
-			int pageNumber = Integer.parseInt(splitter[0].substring(0,2), 16);
+			int pageNumber = Integer.parseInt(splitter[0].substring(0,5), 16);
 
 			if(splitter[1].equals("R"))
 			{
@@ -63,30 +63,5 @@ public class Main
 		//NRU n = new NRU(ram, refreshRate);
 		return;
 
-
-
-
-
-
-
 	}
-
-
-
-
-
-
-
-	/*
-	 * hit, page fault – no eviction
-	 * page fault – evict clean
-	 * page fault – evict dirty
-	 * -------------------------
-	 * Number of frames:       8
-	 * Total memory accesses:  1000000
-     * Total page faults:      181856
-     * Total writes to disk:   29401
-	 *
-	 */
-
 }

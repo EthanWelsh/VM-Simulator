@@ -7,6 +7,8 @@ public class RAM
 	private static int EVICT_CLEAN = 0;
 	private static int EVICT_DIRTY = 0;
 	private static int TOTAL_MEMORY_ACCESSES = 0;
+	private static int PAGE_FAULTS = 0;
+
 
 	private static final int OPTIMAL = 0;
 	private static final int CLOCK = 1;
@@ -52,22 +54,33 @@ public class RAM
 
 	public void read(int frameNum)
 	{
-	 	if(!containsPage(frameNum)) put(frameNum);
+	 	if(!containsPage(frameNum))
+		{
+			PAGE_FAULTS++;
+			put(frameNum);
+		}
 		TOTAL_MEMORY_ACCESSES++;
 	}
 
 	public void write(int frameNum)
 	{
-		if(!containsPage(frameNum)) put(frameNum); // TODO: Should page start a dirty?
-		else frames.get(frameNum).setDirty();
+		if(!containsPage(frameNum))
+		{
+			PAGE_FAULTS++;
+			put(frameNum); // TODO: Should page start a dirty?
+		}
+		else
+		{
+			frames.get(frameNum).setDirty();
+		}
 		TOTAL_MEMORY_ACCESSES++;
 	}
 
 	public void printStats()
 	{
-		System.out.println("Number of frames:\t" + numberOfFrames);
+		System.out.println("Number of frames:\t" + this.numberOfFrames);
 		System.out.println("Total memory accesses:\t" + TOTAL_MEMORY_ACCESSES);
-		System.out.println("Total page faults:\t" + EVICT_CLEAN + EVICT_DIRTY);
+		System.out.println("Total page faults:\t" + PAGE_FAULTS);
 		System.out.println("Total writes to disk:\t" + EVICT_DIRTY);
 	}
 
@@ -167,10 +180,10 @@ public class RAM
 
 	private void evictPage(int x)
 	{
-		boolean ret = frames.get(x).isClean();
+		boolean thisIsACleanPage = getPage(x).isClean();
 		frames.remove(x);
 
-		if(ret == true) EVICT_CLEAN++;
+		if(thisIsACleanPage) EVICT_CLEAN++;
 		else EVICT_DIRTY++;
 	}
 
