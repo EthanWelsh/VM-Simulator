@@ -124,9 +124,6 @@ public class RAM
 
 	private void put(int pageToAdd)
 	{ // attempt to put a given frame into RAM. If there isn't room, evict a page to make room for it.
-
-
-
 		if(isRoom() == false)
 		{
 			evictPage(findEvictee(EVICT_METHOD));

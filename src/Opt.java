@@ -40,6 +40,7 @@ public class OPT
 			}
 			indexInFile++;
 		}
+
 	}
 
 
@@ -53,7 +54,7 @@ public class OPT
 
 			Integer ipage = (Integer)page;
 
-			if(nextUsed(ipage) == -1)
+			if(nextUsed(ipage) == -1) // TODO nextUsed never returns -1...
 			{ // If the page will never be used again...
 				if(ram.getPage(ipage).isClean())
 				{ // If it's clean.
@@ -112,12 +113,12 @@ public class OPT
 		if(a == null)
 		{
 			System.out.println("WAT??");
-			return -1;
+			return Integer.MAX_VALUE;
 		}
 		else if(a.size() == 0)
 		{
             System.out.println("WAT???");
-			return -1;
+			return Integer.MAX_VALUE;
 		}
 
 		else return a.get(0);
@@ -138,6 +139,6 @@ public class OPT
 		else
 		{
 			priorityMap.get(i).remove(0);
-		}
+    	}
 	}
 }
