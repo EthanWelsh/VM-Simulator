@@ -59,8 +59,6 @@ public class Main
 
 		ram.printStats();
 
-
-		//NRU n = new NRU(ram, refreshRate);
 		return;
 
 	}

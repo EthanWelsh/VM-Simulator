@@ -11,6 +11,7 @@ public class OPT
 	HashMap<Integer, ArrayList<Integer>> priorityMap;
 	RAM ram;
 
+
 	public OPT(RAM ram, String fname) throws IOException
 	{
 		this.ram = ram;
@@ -39,14 +40,13 @@ public class OPT
 			}
 			indexInFile++;
 		}
-
-		System.out.println("ZEBRAS:::: " + priorityMap.size());
 	}
+
 
 	public int getPageToEvict()
 	{
 		Set pagesInRam = ram.pagesInRAM();
-		Integer onTheChoppingBlock = new Integer(0);
+		Integer onTheChoppingBlock = new Integer(-1);
 
 		for(Object page : pagesInRam)
 		{ // Go through every page in ram
@@ -57,11 +57,13 @@ public class OPT
 			{ // If the page will never be used again...
 				if(ram.getPage(ipage).isClean())
 				{ // If it's clean.
-					//popOffFront(ipage);
+
+					System.out.println("EVICT GOOD");
 					return ipage; // If this page is never used again, evict it.
 				}
 				else
 				{ // Otherwise, if it's dirty, keep look to see if you can find a clean page that won't be used to beat it.
+					System.out.println("MAYBE EVICT?");
 					onTheChoppingBlock = ipage;
 				}
 			}
@@ -71,15 +73,14 @@ public class OPT
 				{ // See if the page that we're looking at
 					onTheChoppingBlock = ipage;
 				}
-				else if(nextUsed(ipage) == nextUsed(onTheChoppingBlock))
-				{
-					System.out.println("DDSFsdjfsdlkjfshdsdfadsfdsf");
-					if(ram.getPage(ipage).isClean() && !ram.getPage(onTheChoppingBlock).isClean())
-					{
-						onTheChoppingBlock = ipage;
-					}
-				}
 			}
+		}
+
+
+		if(onTheChoppingBlock == -1)
+		{
+			System.out.println("Fatal error with OPT.");
+			System.exit(-1);
 		}
 
 		// Removing the page from the priority map:
@@ -87,6 +88,7 @@ public class OPT
 
 		return onTheChoppingBlock;
 	}
+
 
 	public String toString()
 	{
@@ -97,22 +99,40 @@ public class OPT
 		return "";
 	}
 
+
 	private int nextUsed(Integer p)
 	{ // Returns the position at which this page is next used. Null if never.
-		if(p == -1) return -1;
+		if(p == -1)
+		{
+			return Integer.MIN_VALUE;
+		}
+
 		ArrayList<Integer> a = priorityMap.get(p);
-		if(a == null) return -1;
+
+		if(a == null)
+		{
+			System.out.println("WAT??");
+			return -1;
+		}
+		else if(a.size() == 0)
+		{
+            System.out.println("WAT???");
+			return -1;
+		}
+
 		else return a.get(0);
 	}
+
 
 	private void popOffFront(Integer i)
 	{
 	  	if(priorityMap.get(i) == null)
 		{
-			//System.out.println("FATAL ZEBRAS " + i);
+			System.out.println("FATAL ZEBRAS " + i);
 		}
 		else if(priorityMap.get(i).size() == 1)
 		{
+			//System.out.println("Setting a page to be never used again.");
 			priorityMap.put(i, null);
 		}
 		else
@@ -120,10 +140,4 @@ public class OPT
 			priorityMap.get(i).remove(0);
 		}
 	}
-
-
-
-
-
-
 }
