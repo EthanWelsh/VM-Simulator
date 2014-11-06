@@ -75,6 +75,10 @@ public class RAM
 	 	if(!containsPage(frameNum))
 		{
 			PAGE_FAULTS++;
+
+
+			System.out.println("PF@   " + frameNum);
+
 			put(frameNum);
 		}
 		TOTAL_MEMORY_ACCESSES++;
@@ -90,6 +94,7 @@ public class RAM
 		{
 			PAGE_FAULTS++;
 			put(frameNum); // TODO: Should page start a dirty?
+			frames.get(frameNum).setDirty();
 		}
 		else
 		{
@@ -219,6 +224,7 @@ public class RAM
 		if(frames.get(x) == null) System.out.println("Whoa..." + x);
 
 		boolean thisIsACleanPage = frames.get(x).isClean();
+
 		frames.remove(x);
 
 		if(thisIsACleanPage) EVICT_CLEAN++;

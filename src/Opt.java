@@ -8,6 +8,9 @@ import java.util.Set;
 
 public class OPT
 {
+
+	final int not_used_again = Integer.MAX_VALUE;
+
 	HashMap<Integer, ArrayList<Integer>> priorityMap;
 	RAM ram;
 
@@ -47,38 +50,37 @@ public class OPT
 	public int getPageToEvict()
 	{
 		Set pagesInRam = ram.pagesInRAM();
-		Integer onTheChoppingBlock = new Integer(-1);
+		Integer onTheChoppingBlock = new Integer(Integer.MIN_VALUE);
 
 		for(Object page : pagesInRam)
 		{ // Go through every page in ram
 
-			Integer ipage = (Integer)page;
+			Integer thisPage = (Integer)page;
 
-			if(nextUsed(ipage) == -1) // TODO nextUsed never returns -1...
+			if(nextUsed(thisPage) == not_used_again)
 			{ // If the page will never be used again...
-				if(ram.getPage(ipage).isClean())
+				if(ram.getPage(thisPage).isClean())
 				{ // If it's clean.
-
-					System.out.println("EVICT GOOD");
-					return ipage; // If this page is never used again, evict it.
+					//System.out.println("EVICT GOOD");
+					popOffFront(thisPage);
+					return thisPage; // If this page is never used again, evict it.
 				}
 				else
 				{ // Otherwise, if it's dirty, keep look to see if you can find a clean page that won't be used to beat it.
-					System.out.println("MAYBE EVICT?");
-					onTheChoppingBlock = ipage;
+					//System.out.println("MAYBE EVICT?");
+					onTheChoppingBlock = thisPage;
 				}
 			}
 			else
 			{ // Otherwise, if the page WILL be used again in the future...
-			  	if(nextUsed(ipage) > nextUsed(onTheChoppingBlock))
+			  	if(nextUsed(thisPage) > nextUsed(onTheChoppingBlock))
 				{ // See if the page that we're looking at
-					onTheChoppingBlock = ipage;
+					onTheChoppingBlock = thisPage;
 				}
 			}
 		}
 
-
-		if(onTheChoppingBlock == -1)
+		if(onTheChoppingBlock == Integer.MIN_VALUE)
 		{
 			System.out.println("Fatal error with OPT.");
 			System.exit(-1);
@@ -109,7 +111,7 @@ public class OPT
 
 	private int nextUsed(Integer p)
 	{ // Returns the position at which this page is next used. Null if never.
-		if(p == -1)
+		if(p == Integer.MIN_VALUE)
 		{
 			return Integer.MIN_VALUE;
 		}
@@ -118,12 +120,12 @@ public class OPT
 
 		if(a == null)
 		{
-			System.out.println("WAT??");
+			//System.out.println("WAT??");
 			return Integer.MAX_VALUE;
 		}
 		else if(a.size() == 0)
 		{
-            System.out.println("WAT???");
+            //System.out.println("WAT???");
 			return Integer.MAX_VALUE;
 		}
 
@@ -135,7 +137,7 @@ public class OPT
 	{
 	  	if(priorityMap.get(i) == null)
 		{
-			System.out.println("FATAL ZEBRAS " + i);
+			//System.out.println("FATAL ZEBRAS " + i);
 		}
 		else if(priorityMap.get(i).size() == 1)
 		{
