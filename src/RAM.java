@@ -97,6 +97,25 @@ public class RAM
 		return s;
 	}
 
+
+
+	public void notifyDataStructure()
+	{
+	/* This method requires some explanation, mostly because this is pretty bad code. When I was originally thinking
+	 * this all out, I envisioned a modular scheme in which we'd outsource the eviction decisions to another class when
+	 * (and only when) it was time to make an eviction. Unfortunately, this means that the data structures we use aren't
+	 * really kept up to date on what's happening in our algorithm in between evictions.
+	 *
+	 * This poses and especial problem in OPT because I implemented it in such a way that it would always pick the next
+	 * page for eviction by consulting a table with a queue of indecies at which a specific page is referenced. I
+	 * determined these indecies in the memory trace to find which page will be used the furthest away into the future.
+	 * Unfortunately, because my program currently only consults OPT when it's time for eviction, OPT has know of
+	 * knowing when a page is referenced and no eviction occurs.
+ 	 */
+
+
+	}
+
 	public int size()
 	{
 		return numberOfFrames;
