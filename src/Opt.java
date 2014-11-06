@@ -91,6 +91,12 @@ public class OPT
 	}
 
 
+	public void letOptKnowAboutPageReference(int x)
+	{
+		popOffFront(x);
+	}
+
+
 	public String toString()
 	{
 		for(Integer i : priorityMap.keySet())

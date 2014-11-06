@@ -37,7 +37,16 @@ public class RAM
 	{
 		this.numberOfFrames = numberOfFrames;
 		frames = new HashMap<Integer, Page>(this.numberOfFrames);
+
+		if(opt == null) try
+		{
+			opt = new OPT(this, traceFile);
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
+
 
 	public RAM(int numberOfFrames, int method, int timeout, String file)
 	{
@@ -46,6 +55,15 @@ public class RAM
 		frames = new HashMap<Integer, Page>(this.numberOfFrames);
 		this.timeout = timeout;
 		this.traceFile = file;
+
+		if(opt == null) try
+		{
+			opt = new OPT(this, traceFile);
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
 	}
 
 	// *********************************************************************************//
@@ -60,7 +78,11 @@ public class RAM
 			put(frameNum);
 		}
 		TOTAL_MEMORY_ACCESSES++;
+
+		opt.letOptKnowAboutPageReference(frameNum);
+
 	}
+
 
 	public void write(int frameNum)
 	{
@@ -74,7 +96,11 @@ public class RAM
 			frames.get(frameNum).setDirty();
 		}
 		TOTAL_MEMORY_ACCESSES++;
+
+		opt.letOptKnowAboutPageReference(frameNum);
+
 	}
+
 
 	public void printStats()
 	{
@@ -83,6 +109,7 @@ public class RAM
 		System.out.println("Total page faults:\t" + PAGE_FAULTS);
 		System.out.println("Total writes to disk:\t" + EVICT_DIRTY);
 	}
+
 
 	public String toString()
 	{
@@ -98,38 +125,23 @@ public class RAM
 	}
 
 
-
-	public void notifyDataStructure()
-	{
-	/* This method requires some explanation, mostly because this is pretty bad code. When I was originally thinking
-	 * this all out, I envisioned a modular scheme in which we'd outsource the eviction decisions to another class when
-	 * (and only when) it was time to make an eviction. Unfortunately, this means that the data structures we use aren't
-	 * really kept up to date on what's happening in our algorithm in between evictions.
-	 *
-	 * This poses and especial problem in OPT because I implemented it in such a way that it would always pick the next
-	 * page for eviction by consulting a table with a queue of indecies at which a specific page is referenced. I
-	 * determined these indecies in the memory trace to find which page will be used the furthest away into the future.
-	 * Unfortunately, because my program currently only consults OPT when it's time for eviction, OPT has know of
-	 * knowing when a page is referenced and no eviction occurs.
- 	 */
-
-
-	}
-
 	public int size()
 	{
 		return numberOfFrames;
 	}
+
 
 	public Set pagesInRAM()
 	{
 		return frames.keySet();
 	}
 
+
 	public Page getPage(Integer integer)
 	{
 		return frames.get(integer);
 	}
+
 
 	public void dereferenceEverything()
 	{
@@ -155,16 +167,19 @@ public class RAM
 		}
 	}
 
+
 	private boolean containsPage(int x)
 	{ // see if a given frame is present in RAM
 		if(frames.containsKey(x)) return true;
 		else return false;
 	}
 
+
 	private boolean isRoom()
 	{ // determine if RAM is currently full
 		return frames.size() < numberOfFrames;
 	}
+
 
 	// findEvictee: decide which page to evict given the method for eviction OPT|NRU|CLOCK|RANDOM
 	private int findEvictee(int method)
@@ -197,6 +212,7 @@ public class RAM
 		return -1;
 	}
 
+
 	private void evictPage(int x)
 	{
 
@@ -208,6 +224,4 @@ public class RAM
 		if(thisIsACleanPage) EVICT_CLEAN++;
 		else EVICT_DIRTY++;
 	}
-
-
 }
