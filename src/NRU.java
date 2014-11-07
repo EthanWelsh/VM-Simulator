@@ -1,5 +1,3 @@
-import java.util.concurrent.*;
-
 public class NRU
 {
 	private static final int CLEAN_UNREFERENCED = 4;
@@ -19,7 +17,7 @@ public class NRU
 		this.ram = ram;
 	}
 
-	public void letNruKnowAboutPageReference(int fn)
+	public void letNruKnowAboutPageReference()
 	{
 		if(referencesSinceLastTimeout > timeout)
 		{

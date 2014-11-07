@@ -97,8 +97,8 @@ public class RAM
 
 	public void update(int fn)
 	{
-		if(opt != null)opt.letOptKnowAboutPageReference(fn);
-		if(nru != null)nru.letNruKnowAboutPageReference(fn);
+		if(opt != null) opt.letOptKnowAboutPageReference(fn);
+		if(nru != null) nru.letNruKnowAboutPageReference();
 	}
 
 
@@ -150,9 +150,6 @@ public class RAM
 			frames.get(i).setUnreferenced();
 
 		}
-
-
-
 	}
 
 
@@ -199,9 +196,8 @@ public class RAM
 					if(opt == null) opt = new OPT(this, traceFile);
 					return opt.getPageToEvict();
 				case CLOCK:
-					System.out.println("Clock not supported at this time.");
-					System.exit(0);
-					break;
+					if(clock == null) clock = new Clock(this);
+					return clock.getPageToEvict();
 				case NRU:
 					if(nru == null) nru = new NRU(this, this.timeout);
 					return nru.getPageToEvict();
@@ -222,14 +218,13 @@ public class RAM
 
 	private void evictPage(int x)
 	{
-
 		if(frames.get(x) == null) System.out.println("Whoa..." + x);
 
 		boolean thisIsACleanPage = frames.get(x).isClean();
 
-		frames.remove(x);
-
 		if(thisIsACleanPage) EVICT_CLEAN++;
 		else EVICT_DIRTY++;
+
+		frames.remove(x);
 	}
 }
