@@ -32,22 +32,6 @@ public class RAM
 	// 										CONSTRUCTORS                                //
 	// *********************************************************************************//
 
-	// @ numberOfFrames: The amount of frames you'd like to be able to exist in RAM at any given time (as pages)
-	public RAM(int numberOfFrames)
-	{
-		this.numberOfFrames = numberOfFrames;
-		frames = new HashMap<Integer, Page>(this.numberOfFrames);
-
-		if(opt == null) try
-		{
-			opt = new OPT(this, traceFile);
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-
 	public RAM(int numberOfFrames, int method, int timeout, String file)
 	{
 		EVICT_METHOD = method;
@@ -56,7 +40,7 @@ public class RAM
 		this.timeout = timeout;
 		this.traceFile = file;
 
-		if(opt == null) try
+		if(method == OPTIMAL && opt == null) try
 		{
 			opt = new OPT(this, traceFile);
 		} catch (IOException e)
@@ -84,7 +68,9 @@ public class RAM
 
 
 		frames.get(frameNum).setReferenced();
-		opt.letOptKnowAboutPageReference(frameNum);
+		update(frameNum);
+
+
 		TOTAL_MEMORY_ACCESSES++;
 	}
 
@@ -103,8 +89,16 @@ public class RAM
 		}
 
 		frames.get(frameNum).setReferenced();
-		opt.letOptKnowAboutPageReference(frameNum);
+		update(frameNum);
+
+
 		TOTAL_MEMORY_ACCESSES++;
+	}
+
+	public void update(int fn)
+	{
+		if(opt != null)opt.letOptKnowAboutPageReference(fn);
+		if(nru != null)nru.letNruKnowAboutPageReference(fn);
 	}
 
 
@@ -151,7 +145,14 @@ public class RAM
 
 	public void dereferenceEverything()
 	{
-		for(Object i : pagesInRAM()) frames.get(i).setUnreferenced();
+		for(Object i : pagesInRAM())
+		{
+			frames.get(i).setUnreferenced();
+
+		}
+
+
+
 	}
 
 

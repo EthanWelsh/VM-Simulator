@@ -34,7 +34,27 @@ public class Main
 		// Number of Frames 		X
 		// 32 bit address space
 
-		RAM ram = new RAM(numframes, NRU, refreshRate, traceFile);
+		int algo_int = 0;
+
+		if(algo.equalsIgnoreCase("OPT"))
+		{
+			algo_int = OPTIMAL;
+		}
+		else if(algo.equalsIgnoreCase("RAND"))
+		{
+			algo_int = RANDOM;
+		}
+		else if(algo.equalsIgnoreCase("NRU"))
+		{
+			algo_int = NRU;
+		}
+		else if(algo.equalsIgnoreCase("CLOCK"))
+		{
+			algo_int = CLOCK;
+		}
+
+
+		RAM ram = new RAM(numframes, algo_int, refreshRate, traceFile);
 
 
 		File file = new File(traceFile);
