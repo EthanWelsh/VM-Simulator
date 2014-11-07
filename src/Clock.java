@@ -13,7 +13,7 @@ public class Clock
 	public int getPageToEvict()
 	{
 		Set ramset = ram.pagesInRAM();
-		Page[] pages = (Page[]) ramset.toArray();
+		Object[] pages = ramset.toArray();
 
 		// Go through your array...
 		//		If you find a referenced page, unreference and proceed.
@@ -21,13 +21,17 @@ public class Clock
 
 		for(;;)
 		{
-			if(pages[index].isReferenced())
+
+			Integer currentPageNumber = (Integer) pages[index];
+			Page currentPage = ram.getPage(currentPageNumber);
+
+			if(currentPage.isReferenced())
 			{
 				index++;
 
 				if(index >= pages.length) index = 0;
 
-				ram.getPage(index).setUnreferenced();
+				ram.getPage(currentPageNumber).setUnreferenced();
 			}
 			else
 			{
@@ -35,7 +39,7 @@ public class Clock
 
 				if(index >= pages.length) index = 0;
 
-				return ram.getPage(index).number();
+				return ram.getPage(currentPageNumber).number();
 			}
 		}
 	}
