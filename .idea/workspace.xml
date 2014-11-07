@@ -80,8 +80,8 @@
           <file leaf-file-name="Clock.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Clock.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.51895046" vertical-offset="154" max-vertical-offset="855">
-                  <caret line="34" column="39" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+                <state vertical-scroll-proportion="0.6938776" vertical-offset="154" max-vertical-offset="855">
+                  <caret line="42" column="63" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
                   <folding>
                     <element signature="e#91#92#0" expanded="true" />
                     <element signature="e#112#113#0" expanded="true" />
@@ -245,7 +245,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-n 8 -a CLOCK $PROJECT_DIR$/tracefiles/bzip.trace" />
+      <option name="PROGRAM_PARAMETERS" value="-n 16 -a CLOCK $PROJECT_DIR$/tracefiles/bzip.trace" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -436,12 +436,12 @@
       <workItem from="1414721916661" duration="85000" />
       <workItem from="1415160431015" duration="7928000" />
       <workItem from="1415230001565" duration="1435000" />
-      <workItem from="1415286011916" duration="18014000" />
+      <workItem from="1415286011916" duration="18128000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50676000" />
+    <option name="totallyTimeSpent" value="50790000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -465,7 +465,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1869" y="112" width="1869" height="1057" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -899,8 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Clock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51895046" vertical-offset="154" max-vertical-offset="855">
-          <caret line="34" column="39" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.6938776" vertical-offset="154" max-vertical-offset="855">
+          <caret line="42" column="63" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
           <folding>
             <element signature="e#91#92#0" expanded="true" />
             <element signature="e#112#113#0" expanded="true" />
