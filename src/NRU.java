@@ -10,6 +10,7 @@ public class NRU
 	int timeout;
 	RAM ram;
 
+
 	public NRU(RAM ram, int timeout)
 	{
 		this.timeout = timeout;
@@ -17,6 +18,7 @@ public class NRU
 
 		setDereference();
 	}
+
 
 	private void setDereference()
 	{
@@ -33,13 +35,6 @@ public class NRU
 		executor.scheduleAtFixedRate(helloRunnable, 0, timeout, TimeUnit.MILLISECONDS); // TODO fix this
 	}
 
-	public void letNruKnowAboutPageReference(int frameNum)
-	{
-
-
-
-
-	}
 
 	public int getPageToEvict()
 	{
@@ -66,7 +61,7 @@ public class NRU
 			{
 				if(bestPageRank == CLEAN_UNREFERENCED || bestPageRank == DIRTY_UNREFERENCED)
 				{
-					System.out.println("Passing this over in favor of fairer seas...");
+					//System.out.println("Passing this over in favor of fairer seas...");
 
 				}
 				else
@@ -77,10 +72,9 @@ public class NRU
 			}
 			else if(p.pageType() == DIRTY_REFERENCED)
 			{
-
 				if(bestPageRank == CLEAN_UNREFERENCED || bestPageRank == DIRTY_UNREFERENCED || bestPageRank != CLEAN_REFERENCED)
 				{
-					System.out.println("Passing this over in favor of fairer seas...");
+					//System.out.println("Passing this over in favor of fairer seas...");
 				}
 				else
 				{
@@ -91,7 +85,4 @@ public class NRU
 		}
 		return bestPage;
 	}
-
-
-
 }

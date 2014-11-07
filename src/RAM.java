@@ -152,7 +152,6 @@ public class RAM
 	public void dereferenceEverything()
 	{
 		for(Object i : pagesInRAM()) frames.get(i).setUnreferenced();
-
 	}
 
 
