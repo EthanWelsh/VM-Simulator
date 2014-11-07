@@ -77,14 +77,15 @@ public class RAM
 			PAGE_FAULTS++;
 
 
-			System.out.println("PF@   " + frameNum);
+			//System.out.println("PF@   " + frameNum);
 
 			put(frameNum);
 		}
-		TOTAL_MEMORY_ACCESSES++;
 
+
+		frames.get(frameNum).setReferenced();
 		opt.letOptKnowAboutPageReference(frameNum);
-
+		TOTAL_MEMORY_ACCESSES++;
 	}
 
 
@@ -100,10 +101,10 @@ public class RAM
 		{
 			frames.get(frameNum).setDirty();
 		}
-		TOTAL_MEMORY_ACCESSES++;
 
+		frames.get(frameNum).setReferenced();
 		opt.letOptKnowAboutPageReference(frameNum);
-
+		TOTAL_MEMORY_ACCESSES++;
 	}
 
 
@@ -151,6 +152,7 @@ public class RAM
 	public void dereferenceEverything()
 	{
 		for(Object i : pagesInRAM()) frames.get(i).setUnreferenced();
+
 	}
 
 

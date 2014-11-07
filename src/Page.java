@@ -7,16 +7,18 @@ public class Page
 	private boolean isClean;
 	private boolean isReferenced;
 
-
 	private static final int CLEAN_UNREFERENCED = 0;
 	private static final int DIRTY_UNREFERENCED = 1;
 	private static final int CLEAN_REFERENCED = 2;
 	private static final int DIRTY_REFERENCED = 3;
 
+
+
 	public Page(int x)
 	{
 		frameNumber = x;
 		isClean = true;
+		isReferenced = false;
 	}
 
 	public int number()

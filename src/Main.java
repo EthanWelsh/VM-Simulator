@@ -34,7 +34,7 @@ public class Main
 		// Number of Frames 		X
 		// 32 bit address space
 
-		RAM ram = new RAM(numframes, OPTIMAL, refreshRate, traceFile);
+		RAM ram = new RAM(numframes, NRU, refreshRate, traceFile);
 
 
 		File file = new File(traceFile);

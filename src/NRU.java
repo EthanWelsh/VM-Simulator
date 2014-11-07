@@ -25,38 +25,69 @@ public class NRU
 			public void run()
 			{
 				ram.dereferenceEverything();
-				System.out.println("I've dereferenced everything.");
+				//System.out.println("I've dereferenced everything.");
 			}
 		};
 
 		ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-		executor.scheduleAtFixedRate(helloRunnable, 0, this.timeout, TimeUnit.MILLISECONDS);
+		executor.scheduleAtFixedRate(helloRunnable, 0, timeout, TimeUnit.MILLISECONDS); // TODO fix this
+	}
+
+	public void letNruKnowAboutPageReference(int frameNum)
+	{
+
+
+
+
 	}
 
 	public int getPageToEvict()
 	{
 
 		int bestPage = -1;
+		int bestPageRank = -1;
 
 		for(Object page : ram.pagesInRAM())
 		{
 
 			Page p = ram.getPage((Integer)page);
 
-			switch (p.pageType())
+			if(p.pageType() == CLEAN_UNREFERENCED)
 			{
-				case CLEAN_UNREFERENCED:
-					return p.number();
-				case DIRTY_UNREFERENCED:
-					bestPage = p.number();
-					break;
-				case CLEAN_REFERENCED:
-					bestPage = p.number();
-					break;
-				case DIRTY_REFERENCED:
-					bestPage = p.number();
-					break;
+				return p.number();
 			}
+			if(p.pageType() == DIRTY_UNREFERENCED)
+			{
+				bestPageRank = DIRTY_UNREFERENCED;
+				bestPage = p.number();
+
+			}
+			else if(p.pageType() == CLEAN_REFERENCED)
+			{
+				if(bestPageRank == CLEAN_UNREFERENCED || bestPageRank == DIRTY_UNREFERENCED)
+				{
+					System.out.println("Passing this over in favor of fairer seas...");
+
+				}
+				else
+				{
+					bestPageRank = CLEAN_REFERENCED;
+					bestPage = p.number();
+				}
+			}
+			else if(p.pageType() == DIRTY_REFERENCED)
+			{
+
+				if(bestPageRank == CLEAN_UNREFERENCED || bestPageRank == DIRTY_UNREFERENCED || bestPageRank != CLEAN_REFERENCED)
+				{
+					System.out.println("Passing this over in favor of fairer seas...");
+				}
+				else
+				{
+					bestPageRank = DIRTY_REFERENCED;
+					bestPage = p.number();
+				}
+           	}
 		}
 		return bestPage;
 	}
