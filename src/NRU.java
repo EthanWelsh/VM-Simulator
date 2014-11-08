@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class NRU
 {
 	private static final int CLEAN_UNREFERENCED = 4;
@@ -33,9 +35,15 @@ public class NRU
 		int bestPage = -1;
 		int bestPageRank = -1;
 
-		for(Object page : ram.pagesInRAM())
+		Object[] pgs = ram.pagesInRAM().toArray();
+
+		int startingIndex = new Random().nextInt(pgs.length);
+
+		for(int i = 0; i < pgs.length; i++)
 		{
-			Page p = ram.getPage((Integer)page);
+			if(startingIndex >= pgs.length) startingIndex = 0;
+
+			Page p = ram.getPage((Integer)pgs[startingIndex]);
 
 			if(p.pageType() == CLEAN_UNREFERENCED)
 			{
@@ -55,9 +63,11 @@ public class NRU
 			{
 				bestPageRank = DIRTY_REFERENCED;
 				bestPage = p.number();
-	      	}
-		}
+			}
 
+			startingIndex++;
+
+		}
 		return bestPage;
 	}
 }

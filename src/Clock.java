@@ -15,13 +15,8 @@ public class Clock
 		Set ramset = ram.pagesInRAM();
 		Object[] pages = ramset.toArray();
 
-		// Go through your array...
-		//		If you find a referenced page, unreference and proceed.
-		//		If you find an unreferenced page, return it.
-
 		for(;;)
 		{
-
 			Integer currentPageNumber = (Integer) pages[index];
 			Page currentPage = ram.getPage(currentPageNumber);
 
@@ -43,9 +38,4 @@ public class Clock
 			}
 		}
 	}
-
-
-
-
-
 }
