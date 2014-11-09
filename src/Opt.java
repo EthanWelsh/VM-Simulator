@@ -43,7 +43,6 @@ public class OPT
 			}
 			indexInFile++;
 		}
-
 	}
 
 
@@ -62,7 +61,7 @@ public class OPT
 				if(ram.getPage(thisPage).isClean())
 				{ // If it's clean.
 					//System.out.println("EVICT GOOD");
-					popOffFront(thisPage);
+					//popOffFront(thisPage); TODO
 					return thisPage; // If this page is never used again, evict it.
 				}
 				else
@@ -87,7 +86,7 @@ public class OPT
 		}
 
 		// Removing the page from the priority map:
-		popOffFront(onTheChoppingBlock);
+		//popOffFront(onTheChoppingBlock);
 
 		return onTheChoppingBlock;
 	}
@@ -137,7 +136,7 @@ public class OPT
 	{
 	  	if(priorityMap.get(i) == null)
 		{
-			//System.out.println("FATAL ZEBRAS " + i);
+			System.out.println("FATAL ZEBRAS " + i);
 		}
 		else if(priorityMap.get(i).size() == 1)
 		{

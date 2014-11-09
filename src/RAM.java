@@ -56,7 +56,10 @@ public class RAM
 
 	public void read(int frameNum)
 	{
-	 	if(!containsPage(frameNum))
+
+
+
+		if(!containsPage(frameNum))
 		{
 			PAGE_FAULTS++;
 
@@ -65,19 +68,23 @@ public class RAM
 
 			put(frameNum);
 		}
+		else
+		{
+			System.out.println("Hit " + frameNum);
+		}
 
 
 		frames.get(frameNum).setReferenced();
+
+
 		update(frameNum);
-
-
 		TOTAL_MEMORY_ACCESSES++;
 	}
 
 
 	public void write(int frameNum)
 	{
-		if(!containsPage(frameNum))
+        if(!containsPage(frameNum))
 		{
 			PAGE_FAULTS++;
 			put(frameNum); // TODO: Should page start a dirty?
@@ -86,18 +93,22 @@ public class RAM
 		else
 		{
 			frames.get(frameNum).setDirty();
+			System.out.println("Hit " + frameNum);
 		}
 
 		frames.get(frameNum).setReferenced();
+
+
 		update(frameNum);
-
-
 		TOTAL_MEMORY_ACCESSES++;
 	}
 
 	public void update(int fn)
 	{
-		if(opt != null) opt.letOptKnowAboutPageReference(fn);
+		if(opt != null)
+		{
+			opt.letOptKnowAboutPageReference(fn);
+		}
 		if(nru != null) nru.letNruKnowAboutPageReference();
 	}
 
@@ -166,6 +177,7 @@ public class RAM
 		}
 		else
 		{
+			System.out.println("Page Fault --- No Evict " + pageToAdd);
 			frames.put(pageToAdd, new Page(pageToAdd));
 			NO_EVICT++;
 		}
@@ -220,10 +232,20 @@ public class RAM
 	{
 		if(frames.get(x) == null) System.out.println("Whoa..." + x);
 
+		System.out.println(x);
+
 		boolean thisIsACleanPage = frames.get(x).isClean();
 
-		if(thisIsACleanPage) EVICT_CLEAN++;
-		else EVICT_DIRTY++;
+		if(thisIsACleanPage)
+		{
+			System.out.println("Page Fault --- Evict CLEAN " + x);
+			EVICT_CLEAN++;
+		}
+		else
+		{
+			System.out.println("Page Fault --- Evict DIRTY " + x);
+			EVICT_DIRTY++;
+		}
 
 		frames.remove(x);
 	}
