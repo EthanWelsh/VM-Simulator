@@ -216,8 +216,6 @@ public class RAM
 	{
 		if(frames.get(x) == null) System.out.println("Whoa..." + x);
 
-		System.out.println(x);
-
 		boolean thisIsACleanPage = frames.get(x).isClean();
 
 		if(thisIsACleanPage)

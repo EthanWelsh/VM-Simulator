@@ -40,3 +40,17 @@ java Main -n 32 -a RAND /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_RA
 java Main -n 64 -a RAND /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_RAND_64.txt &
 java Main -n 128 -a RAND /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_RAND_128.txt &
 
+ECHO GCC NRU30
+java Main -n 8 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/gcc.trace > gcc_NRU30_8.txt &
+java Main -n 16 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/gcc.trace > gcc_NRU30_16.txt &
+java Main -n 32 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/gcc.trace > gcc_NRU30_32.txt &
+java Main -n 64 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/gcc.trace > gcc_NRU30_64.txt &
+java Main -n 128 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/gcc.trace > gcc_NRU30_128.txt &
+
+ECHO BZIP NRU30
+java Main -n 8 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_NRU30_8.txt &
+java Main -n 16 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_NRU30_16.txt &
+java Main -n 32 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_NRU30_32.txt &
+java Main -n 64 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_NRU30_64.txt &
+java Main -n 128 -r 30 -a NRU /Users/welshej/github/VM/tracefiles/bzip.trace > bzip_NRU30_128.txt &
+
