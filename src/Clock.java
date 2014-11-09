@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 
 public class Clock
@@ -13,28 +15,30 @@ public class Clock
 	public int getPageToEvict()
 	{
 		Set ramset = ram.pagesInRAM();
-		Object[] pages = ramset.toArray();
 
-		for(;;)
+		Object[] p = ramset.toArray();
+		Integer [] pages = new Integer[p.length];
+
+		for(int i = 0; i < p.length; i++) pages[i] = (Integer) p[i];
+
+		Arrays.sort(pages);
+
+		for (;;)
 		{
-			Integer currentPageNumber = (Integer) pages[index];
-			Page currentPage = ram.getPage(currentPageNumber);
+			Integer currentPageNumber = pages[index];
+			Page currentPage = ram.getPage(pages[index]);
 
-			if(currentPage.isReferenced())
+			if (currentPage.isReferenced())
 			{
 				index++;
-
-				if(index >= pages.length) index = 0;
-
-				ram.getPage(currentPageNumber).setUnreferenced();
+                if (index >= pages.length) index = 0;
+                ram.getPage(currentPageNumber).setUnreferenced();
 			}
 			else
 			{
-			    index++;
-
-				if(index >= pages.length) index = 0;
-
-				return ram.getPage(currentPageNumber).number();
+				index++;
+                if (index >= pages.length) index = 0;
+                return ram.getPage(currentPageNumber).number();
 			}
 		}
 	}

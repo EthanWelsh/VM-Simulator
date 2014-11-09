@@ -47,8 +47,7 @@ public class RAM
 		{
 			e.printStackTrace();
 		}
-
-	}
+   	}
 
 	// *********************************************************************************//
 	// 										PUBLIC METHODS                              //
@@ -83,6 +82,7 @@ public class RAM
 		}
 		else
 		{
+			System.out.println("Hit " + frameNum);
 			frames.get(frameNum).setDirty();
 		}
 
