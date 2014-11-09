@@ -41,26 +41,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RAM.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="RAM.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RAM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1185" max-vertical-offset="3765">
-              <caret line="109" column="49" selection-start-line="109" selection-start-column="49" selection-end-line="109" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.9607843" vertical-offset="2700" max-vertical-offset="3525">
+              <caret line="236" column="4" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
               <folding>
-                <element signature="e#2895#2896#0" expanded="true" />
-                <element signature="e#2924#2925#0" expanded="true" />
-                <element signature="e#2967#2968#0" expanded="true" />
-                <element signature="e#3000#3001#0" expanded="true" />
+                <element signature="e#2788#2789#0" expanded="true" />
+                <element signature="e#2817#2818#0" expanded="true" />
+                <element signature="e#2860#2861#0" expanded="true" />
+                <element signature="e#2893#2894#0" expanded="true" />
+                <element signature="e#2935#2936#0" expanded="true" />
+                <element signature="e#3002#3003#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OPT.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="OPT.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OPT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74509805" vertical-offset="750" max-vertical-offset="2220">
-              <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1830">
+              <caret line="72" column="69" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -89,8 +91,8 @@
       <file leaf-file-name="Clock.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Clock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="690">
-              <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -112,9 +114,9 @@
         <option value="$PROJECT_DIR$/src/CircularQueue.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Page.java" />
-        <option value="$PROJECT_DIR$/src/Clock.java" />
         <option value="$PROJECT_DIR$/src/NRU.java" />
         <option value="$PROJECT_DIR$/src/OPT.java" />
+        <option value="$PROJECT_DIR$/src/Clock.java" />
         <option value="$PROJECT_DIR$/src/RAM.java" />
       </list>
     </option>
@@ -233,7 +235,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-n 128 -a -r 50 NRU $PROJECT_DIR$/tracefiles/bzip.trace" />
+      <option name="PROGRAM_PARAMETERS" value="-n 8 -a CLOCK $PROJECT_DIR$/tracefiles/gcc.trace" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -426,12 +428,12 @@
       <workItem from="1415230001565" duration="1435000" />
       <workItem from="1415286011916" duration="18250000" />
       <workItem from="1415375796021" duration="19000" />
-      <workItem from="1415422339476" duration="6878000" />
+      <workItem from="1415422339476" duration="7546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57809000" />
+    <option name="totallyTimeSpent" value="58477000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -455,7 +457,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1869" y="112" width="1869" height="1057" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -475,7 +477,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11603722" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19979818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19979818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -528,10 +530,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="3045" max-vertical-offset="3540">
           <caret line="203" column="32" selection-start-line="203" selection-start-column="28" selection-end-line="203" selection-end-column="28" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -573,10 +577,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="3285">
           <caret line="112" column="64" selection-start-line="112" selection-start-column="64" selection-end-line="112" selection-end-column="64" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -601,10 +607,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="3000">
           <caret line="40" column="16" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -629,10 +637,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="2955">
           <caret line="187" column="118" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -665,10 +675,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="2955">
           <caret line="187" column="118" selection-start-line="187" selection-start-column="5" selection-end-line="187" selection-end-column="5" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -701,10 +713,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="2760">
           <caret line="10" column="89" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -729,10 +743,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1050" max-vertical-offset="2760">
           <caret line="70" column="62" selection-start-line="70" selection-start-column="62" selection-end-line="70" selection-end-column="62" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -742,10 +758,12 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1920">
           <caret line="112" column="21" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
           <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -870,14 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Clock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="690">
-          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NRU.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="439" max-vertical-offset="1170">
@@ -894,24 +904,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RAM.java">
+    <entry file="file://$PROJECT_DIR$/src/OPT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1185" max-vertical-offset="3765">
-          <caret line="109" column="49" selection-start-line="109" selection-start-column="49" selection-end-line="109" selection-end-column="49" />
-          <folding>
-            <element signature="e#2895#2896#0" expanded="true" />
-            <element signature="e#2924#2925#0" expanded="true" />
-            <element signature="e#2967#2968#0" expanded="true" />
-            <element signature="e#3000#3001#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1830">
+          <caret line="72" column="69" selection-start-line="72" selection-start-column="16" selection-end-line="72" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OPT.java">
+    <entry file="file://$PROJECT_DIR$/src/Clock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74509805" vertical-offset="750" max-vertical-offset="2220">
-          <caret line="94" column="28" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RAM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9607843" vertical-offset="2700" max-vertical-offset="3525">
+          <caret line="236" column="4" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
+          <folding>
+            <element signature="e#2788#2789#0" expanded="true" />
+            <element signature="e#2817#2818#0" expanded="true" />
+            <element signature="e#2860#2861#0" expanded="true" />
+            <element signature="e#2893#2894#0" expanded="true" />
+            <element signature="e#2935#2936#0" expanded="true" />
+            <element signature="e#3002#3003#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

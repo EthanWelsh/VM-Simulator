@@ -56,16 +56,9 @@ public class RAM
 
 	public void read(int frameNum)
 	{
-
-
-
 		if(!containsPage(frameNum))
 		{
 			PAGE_FAULTS++;
-
-
-			//System.out.println("PF@   " + frameNum);
-
 			put(frameNum);
 		}
 		else
@@ -73,9 +66,7 @@ public class RAM
 			System.out.println("Hit " + frameNum);
 		}
 
-
 		frames.get(frameNum).setReferenced();
-
 
 		update(frameNum);
 		TOTAL_MEMORY_ACCESSES++;
@@ -93,22 +84,18 @@ public class RAM
 		else
 		{
 			frames.get(frameNum).setDirty();
-			System.out.println("Hit " + frameNum);
 		}
 
 		frames.get(frameNum).setReferenced();
-
 
 		update(frameNum);
 		TOTAL_MEMORY_ACCESSES++;
 	}
 
+
 	public void update(int fn)
 	{
-		if(opt != null)
-		{
-			opt.letOptKnowAboutPageReference(fn);
-		}
+		if(opt != null) opt.letOptKnowAboutPageReference(fn);
 		if(nru != null) nru.letNruKnowAboutPageReference();
 	}
 
@@ -156,17 +143,14 @@ public class RAM
 
 	public void dereferenceEverything()
 	{
-		for(Object i : pagesInRAM())
-		{
-			frames.get(i).setUnreferenced();
-
-		}
+		for(Object i : pagesInRAM()) frames.get(i).setUnreferenced();
 	}
 
 
 	// *********************************************************************************//
 	// 									PRIVATE METHODS                                 //
 	// *********************************************************************************//
+
 
 	private void put(int pageToAdd)
 	{ // attempt to put a given frame into RAM. If there isn't room, evict a page to make room for it.
