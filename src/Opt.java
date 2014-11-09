@@ -85,9 +85,6 @@ public class OPT
 			System.exit(-1);
 		}
 
-		// Removing the page from the priority map:
-		//popOffFront(onTheChoppingBlock);
-
 		return onTheChoppingBlock;
 	}
 
@@ -110,42 +107,19 @@ public class OPT
 
 	private int nextUsed(Integer p)
 	{ // Returns the position at which this page is next used. Null if never.
-		if(p == Integer.MIN_VALUE)
-		{
-			return Integer.MIN_VALUE;
-		}
+		if(p == Integer.MIN_VALUE) return Integer.MIN_VALUE;
 
 		ArrayList<Integer> a = priorityMap.get(p);
 
-		if(a == null)
-		{
-			//System.out.println("WAT??");
-			return Integer.MAX_VALUE;
-		}
-		else if(a.size() == 0)
-		{
-            //System.out.println("WAT???");
-			return Integer.MAX_VALUE;
-		}
-
+		if(a == null) return Integer.MAX_VALUE;
+		else if(a.size() == 0) return Integer.MAX_VALUE;
 		else return a.get(0);
 	}
 
 
 	private void popOffFront(Integer i)
 	{
-	  	if(priorityMap.get(i) == null)
-		{
-			System.out.println("FATAL ZEBRAS " + i);
-		}
-		else if(priorityMap.get(i).size() == 1)
-		{
-			//System.out.println("Setting a page to be never used again.");
-			priorityMap.put(i, null);
-		}
-		else
-		{
-			priorityMap.get(i).remove(0);
-    	}
+		if(priorityMap.get(i).size() == 1) priorityMap.put(i, null);
+		else priorityMap.get(i).remove(0);
 	}
 }
